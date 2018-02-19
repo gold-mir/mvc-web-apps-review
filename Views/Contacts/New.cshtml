@@ -5,8 +5,12 @@
         <title></title>
     </head>
     <body>
+        <h1>Add New Contact</h1>
         <form class="" action="/contacts" method="post">
-            <button type="submit" name="button">Go</button>
+            <label>Contact Name: <input type="text" name="new-name" required></label>
+            <label>Contact Email: <input type="email" name="new-email" required></label>
+            <label>Contact Phone Number: <input type="number" name="new-phone"required></label>
+            <button type="submit" name="button">Add Contact</button>
         </form>
     </body>
 </html>

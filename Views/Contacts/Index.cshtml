@@ -5,7 +5,20 @@
         <title>Application</title>
     </head>
     <body>
-        <h1>HTML GOES HERE</h1>
-        <a href="contacts/new">new</a>
+        <a href="contacts/new"><button type="button" name="button">Add Contact</button></a>
+
+        <h2>Contacts</h2>
+        <ul>
+            @{
+                foreach(var contact in Model)
+                {
+                    <li>@contact.GetName() | @contact.GetEmail() | @contact.GetPhone()</li>
+                }
+            }
+        </ul>
+
+        <form action="/contacts/clear" method="post">
+            <button type="submit">Clear Contacts</button>
+        </form>
     </body>
 </html>

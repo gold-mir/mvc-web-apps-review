@@ -9,7 +9,7 @@ namespace Application.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return View(Contact.GetAllInstances());
         }
 
         [HttpGet]
@@ -21,13 +21,24 @@ namespace Application.Controllers
         [HttpPost("/contacts")]
         public ActionResult Create()
         {
-            return View("Index");
+            string newName = Request.Form["new-name"];
+            string newEmail = Request.Form["new-email"];
+            string newPhone = Request.Form["new-phone"];
+
+            if(newName == "" || newEmail == "" || newPhone == "")
+            {
+                return View("Index", Contact.GetAllInstances());
+            } else {
+                Contact newContact = new Contact(newName, newEmail, newPhone);
+                return View("Index", Contact.GetAllInstances());
+            }
         }
 
         [HttpPost("/contacts/clear")]
         public ActionResult Clear()
         {
-            return Redirect("/contacts")
+            Contact.GetAllInstances().Clear();
+            return Redirect("/contacts");
         }
     }
 }
