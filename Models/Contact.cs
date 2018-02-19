@@ -4,6 +4,16 @@ namespace Application.Models
 {
     public class Contact
     {
+        public Contact(string name, string email, string phone)
+        {
+            _name = name;
+            _email = email;
+            _phone = phone;
+
+            allContacts.Add(this);
+            _id = maxID++;
+        }
+
         private static List<Contact> allContacts = new List<Contact>();
         private static int maxID = 0;
 
@@ -29,16 +39,6 @@ namespace Application.Models
         private string _email;
         private string _phone;
         private int _id;
-
-        public Contact(name, email, phone)
-        {
-            _name = name;
-            _email = email;
-            _phone = phone;
-
-            allContacts += this;
-            _id = maxID++;
-        }
 
         public int GetID()
         {
